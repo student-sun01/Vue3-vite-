@@ -46,8 +46,10 @@
 </template>
 <script>
 import {useRouter} from 'vue-router'
+import { useStore } from 'vuex';
 export default {
   setup() {
+    const store = useStore()
     const router = useRouter()
     const list = [
       {
@@ -90,6 +92,8 @@ export default {
       router.push({
         name:item.name
       })
+      // vuex管理
+      store.commit('selectMenu',item)
     }
     return {
       noChildren,

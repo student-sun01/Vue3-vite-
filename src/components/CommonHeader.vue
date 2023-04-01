@@ -5,7 +5,12 @@
       <el-button size="small" @click="handleCollapse">
         <el-icon :size="20"><Menu /></el-icon>
       </el-button>
-      <h3>首页</h3>
+      <el-breadcrumb separator="/" class="bread">
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="current.path" v-if="current">{{
+          current.label
+        }}</el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
     <div class="r-content">
       <el-dropdown>
@@ -23,6 +28,7 @@
   </el-header>
 </template>
 <script>
+import { computed } from "vue";
 import { useStore } from "vuex";
 export default {
   setup() {
@@ -34,9 +40,14 @@ export default {
       // 调用vuex中的mutations
       store.commit("updateIsCollapse", "123");
     };
+    // 计算属性
+    let current = computed(() => {
+      return store.state.currentMenu;
+    });
     return {
       getImgSrc,
-      handleCollapse
+      handleCollapse,
+      current,
     };
   },
 };
@@ -48,7 +59,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background:rgba(0, 0, 0, 0.762);
+  background: rgba(0, 0, 0, 0.762);
 }
 .r-content {
   .user {
@@ -66,5 +77,9 @@ header {
   h3 {
     color: #fff;
   }
+}
+:deep(.bread span) {
+  color: #fff !important;
+  cursor: pointer !important;
 }
 </style>
