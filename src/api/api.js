@@ -65,12 +65,22 @@ export default {
   },
 
   // 删除用户
-  DeleteUser(params){
-     return request({
-       url: "/user/delete",
-       method: "get",
-       data: params,
-       mock: false,
-     });
-  }
+  DeleteUser(params) {
+    return request({
+      url: "/user/delete",
+      method: "get",
+      data: params,
+      mock: false,
+    });
+  },
+
+  // 根据用户的用户名不同，返回不同的菜单列表
+  getMenu(params) {
+    return request({
+      url: "/permission/getMenu",
+      method: "post",
+      data: params,
+      mock: false,
+    });
+  },
 };

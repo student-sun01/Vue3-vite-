@@ -83,11 +83,14 @@ export default {
     ];
 
     const noChildren = () => {
-      return list.filter((item) => !item.children);
+      return asycMenu.filter((item) => !item.children);
     };
     const hasChildren = () => {
-      return list.filter((item) => item.children);
+      return asycMenu.filter((item) => item.children);
     };
+    const asycMenu = store.state.menu
+
+    
     const clickMenu = (item)=>{
       router.push({
         name:item.name

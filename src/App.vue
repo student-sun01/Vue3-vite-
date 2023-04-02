@@ -1,9 +1,13 @@
-<script setup></script>
+<script setup>
+// import { useRouter } from "vue-router";
+// import { useStore } from "vuex";
+// const router =useRouter()
+// const store = useStore();
+// store.commit('addMenu',router)
+</script>
 
 <template>
-  
-    <router-view />
-  
+  <router-view />
 </template>
 
 <style>

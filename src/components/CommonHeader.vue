@@ -20,7 +20,7 @@
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item>个人中心</el-dropdown-item>
-            <el-dropdown-item>退出</el-dropdown-item>
+            <el-dropdown-item @click="handleLoginOut">退出</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -30,6 +30,7 @@
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import { useRouter } from 'vue-router';
 export default {
   setup() {
     let store = useStore();
@@ -44,10 +45,17 @@ export default {
     let current = computed(() => {
       return store.state.currentMenu;
     });
+    // 退出
+    const router = useRouter()
+    const handleLoginOut = ()=>{
+      store.commit('clearMenu')
+      router.push('login')
+    }
     return {
       getImgSrc,
       handleCollapse,
       current,
+      handleLoginOut
     };
   },
 };

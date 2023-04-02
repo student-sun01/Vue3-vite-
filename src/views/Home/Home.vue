@@ -177,7 +177,7 @@ export default defineComponent({
     // 获取数据
     const getEchartData = async () => {
       let result = await proxy.$api.getEchartData();
-      console.log(result);
+      // console.log(result);
       let res = result.orderData;
       let userRes = result.userData;
       let videoRes = result.videoData;
